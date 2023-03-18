@@ -1,4 +1,4 @@
-# Kubernetes Components
+#Kubernetes Components
 Some of the important components in the Kubernetes World that I learned are
 
 1 . Node and Pod
