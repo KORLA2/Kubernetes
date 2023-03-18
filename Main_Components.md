@@ -1,4 +1,4 @@
-#Kubernetes Components
+# Kubernetes Components
 
 Some of the important components in the Kubernetes World that I learned are
 
@@ -34,15 +34,14 @@ We create deployment which creates pods and container runs inside a pod and appl
 
 Statefulset is also a template to create pods but replicas created by statefulset is considered as different for example if we want to create database pods we have to choose statefulset as it ensures uniqueness among replicas but deployment doesn't.
 
-Deplyment
+Deployment
 ![image](https://user-images.githubusercontent.com/96729391/226091159-1cae5ca3-3048-4c97-ad7f-b94ae7909a1a.png)
 
-Deployment
+
 
 Statefulset 
 ![image](https://user-images.githubusercontent.com/96729391/226091166-c87e7818-75d6-4abb-8690-78ffb960f4ce.png)
 
-StatefulSet
 
 ConfigMap and Secrets
 Both are configuration files in YAML and keys in these files are used as environment variables while creating deployment files. Secrets contains usernames and passwords in base64 encoded ConfigMap contains some urls , names etc which we don't want to put in deployment files.
