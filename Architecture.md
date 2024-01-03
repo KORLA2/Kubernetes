@@ -54,8 +54,8 @@ etcd is called the brain of the cluster; it stores cluster-related data as a key
 etcd doesn't store application related data.
 
 Cloud controller manager is , when the kubernetes is implemented as a managed service by any cloud then this service is used.
-For example:
-If we want to create a pod in AWS EKS which is AWS  managed k8s service AWS communicates with  this cloud controller manage to  create pod .
+  For example:
+If we want to create a pod in AWS EKS which is AWS  managed k8s service AWS communicates with  this cloud controller manager to  create pod .
 
 
 ![image](https://user-images.githubusercontent.com/96729391/226091362-d7c829aa-17cd-43c8-81cc-519edc103f36.png)
