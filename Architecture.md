@@ -40,7 +40,7 @@ KubeProxy provides intelligence to service, instead of randomly forwarding reque
 ### Controller Manager
 
 ### etcd
-
+### Cloud controller manager
 Master Node Processes are used to interact with workernodes cluster
 
 API Server is an entry point to the Kubernetes cluster.
@@ -52,6 +52,11 @@ ControllerManager detects state changes in the cluster, and when any pod dies, i
 etcd is called the brain of the cluster; it stores cluster-related data as a key-value pair, which means resources that node has used, the health of the cluster, and any pods that have died. All these are stored in etcd, and the etcd controller knows about pods, and the scheduler knows where to place a pod.
 
 etcd doesn't store application related data.
+
+Cloud controller manager is , when the kubernetes is implemented as a managed service by any cloud then this service is used.
+For example:
+If we want to create a pod in AWS EKS which is AWS  managed k8s service AWS communicates with  this cloud controller manage to  create pod .
+
 
 ![image](https://user-images.githubusercontent.com/96729391/226091362-d7c829aa-17cd-43c8-81cc-519edc103f36.png)
 
