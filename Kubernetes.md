@@ -5,8 +5,8 @@ which means managing several containers for an application that is deployed acro
 Besides that, Kubernetes is also used for deploying, rolling out changes, scaling, and monitoring, making it easy to manage applications.
 
 Kubernetes solves the problem of manual
- ### Scaling of Containers
-#### Scheduling 
+### Scaling of Containers
+### Scheduling 
 ### Healing containers
 ### Flexibility
 ### Manual monitoring
