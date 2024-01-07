@@ -67,3 +67,11 @@ If we want to create a pod in AWS EKS which is AWS  managed k8s service AWS comm
 
 ![image](https://user-images.githubusercontent.com/96729391/226091362-d7c829aa-17cd-43c8-81cc-519edc103f36.png)
 
+
+When ever we apply any manifest file through terminal or directly  the request is received by the API server it then sends request to scheduler to find on which node 
+pod has to run the information is then stored in etcd as key value pairs through API server.Controller manager through API server sends request to kubelet to build the configuration as present in manifest file. In case if the  configuration failed kubelet immediately sends request to API server and it updates etcd. The watch status of 
+etcd ensures that the actual state and desired state are matched or not continously. Controller manager then repeats sending request to kubelet to build the configuration 
+through API server . 
+Kubernetes automatically starts pods after they die but it keeps on dying though after many restarts then there might be some error and it stops restarting 
+and updates etcd.
+
