@@ -10,10 +10,14 @@ Deployment
 
 While rolling out to some version of app in Kubernetes if we mention some meaningful text under annotations in deployment file helps us in identifying what we have modified in each version, else we might not be able to know what that version does.
 
-Using kubectl rollout history deployment <Deployment Name>
-lists all the versions of the app and what we have done in that version.
+
 
 ![image](https://github.com/KORLA2/Kubernetes/assets/96729391/0771c9d2-9c33-45cc-b294-92478f2066a4)
+
+
+Using kubectl rollout history deployment <Deployment Name>
+lists all the versions of the app and what we have done in that version.
+![image](https://github.com/KORLA2/Kubernetes/assets/96729391/4d6e0379-b339-4a69-be83-eb74ae518fc0)
 
 
 Using
@@ -23,5 +27,4 @@ Rolls out to 4th version of the app.
 ![image](https://github.com/KORLA2/Kubernetes/assets/96729391/fc471a85-68b2-4064-90bc-e005240d022f)
 
 
-![image](https://github.com/KORLA2/Kubernetes/assets/96729391/defbfa2f-9780-4345-baad-f09fa8c278b3)
 
