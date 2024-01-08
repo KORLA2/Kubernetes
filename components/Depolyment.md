@@ -7,6 +7,7 @@ Deployment
 ![image](https://user-images.githubusercontent.com/96729391/226091159-1cae5ca3-3048-4c97-ad7f-b94ae7909a1a.png)
 
 
+## Rolling Back 
 
 While rolling out to some version of app in Kubernetes if we mention some meaningful text under annotations in deployment file helps us in identifying what we have modified in each version, else we might not be able to know what that version does.
 
