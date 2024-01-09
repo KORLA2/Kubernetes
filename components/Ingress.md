@@ -28,5 +28,8 @@ watched by this ingress controller. Because of Ingress  now we can have enterpri
 
 ![image](https://github.com/KORLA2/Kubernetes/assets/96729391/77fcc8cc-f08c-403d-b70f-4d2b10d64b90)
 
+Using Ingress we can access app through any domain like goutham-app.com
+Using Ingress instead of creating load balancers type  for many services we can map based path , host to different services.
+
 
  
