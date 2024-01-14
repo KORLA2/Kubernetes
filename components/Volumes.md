@@ -2,9 +2,9 @@ We need volumes to persist the data in the pod. Like how we have docker volumes 
 
 ### The 2 Problems volumes has to solve
 
-## Sharing Data across the replicas of the pod
+#### Sharing Data across the replicas of the pod
 
-## Persisting Data
+#### Persisting Data
 
 Let us take the example of deploying mongo db database as deployment and by attaching a node port service. Using mongo compass which is mongo UI ,let us access database.
 
