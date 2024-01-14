@@ -130,11 +130,7 @@ To avoid this replace false with true in storageclass.kubernetes.io field.
 
 By default we have standard storage class that every pvc will use.
 
-If we overwrite our storage class name in pvc then instead of standard storage class, then our storage class will be used by pvc.
 
-In minikube by default every pvc will use standard storage class and use pv created by this storage class and our created pv will be neglected.
-
-To avoid this replace false with true in storageclass.kubernetes.io field.
 ![image](https://github.com/KORLA2/Kubernetes/assets/96729391/76e0bb18-72a6-46d9-aeb2-d80a203c4e92)
 
 If we create our own storage class then there is no problem.
