@@ -1,6 +1,6 @@
 We need volumes to persist the data in the pod. Like how we have docker volumes in Kubernetes also we have volumes to store the data.
 
-# The 2 Problems volumes has to solve
+### The 2 Problems volumes has to solve
 
 ## Sharing Data across the replicas of the pod
 
