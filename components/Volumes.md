@@ -128,7 +128,6 @@ In minikube by default every pvc will use standard storage class and use pv crea
 
 To avoid this replace false with true in storageclass.kubernetes.io field.
 
-By default we have standard storage class that every pvc will use.
 
 
 ![image](https://github.com/KORLA2/Kubernetes/assets/96729391/76e0bb18-72a6-46d9-aeb2-d80a203c4e92)
