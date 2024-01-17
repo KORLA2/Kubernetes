@@ -13,10 +13,10 @@ Problems Statefulset Solves:
 
 1. To achieve high availability we need replicas . If we deploy state ful apps like data base as a deployment then each replica uses same Persistent Volumes then there is 
   inconsistency in Reads and writes.
-  <img width="182" alt="image" align='center' src="https://github.com/KORLA2/Kubernetes/assets/96729391/a02440d2-685d-4c8e-898c-b4c83f4c978a">
+  <img width="182" alt="image" align="center" src="https://github.com/KORLA2/Kubernetes/assets/96729391/a02440d2-685d-4c8e-898c-b4c83f4c978a">
 
 
 There is other Kubernetes object called Statefulset if we deploy such apps as statefulset then each replica use different PV.
-<img width="181" alt="image"  align='center' src="https://github.com/KORLA2/Kubernetes/assets/96729391/c2ce4e50-02ee-4883-9d4b-dd7cb72a8d95">
+<img width="181" alt="image"  align="center" src="https://github.com/KORLA2/Kubernetes/assets/96729391/c2ce4e50-02ee-4883-9d4b-dd7cb72a8d95">
 
 2. 
