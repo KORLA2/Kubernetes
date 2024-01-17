@@ -32,6 +32,7 @@ We have to allow only one data base to write (Master Data Base) and all other re
 #### 3. Sticky Identity
 
 Pod copies data from the previous pod, to identify the previous pod it uses its name so that should not change even after restarting.
+As each replica gets its own own PV even after restarting pod is attached to same PVC.
 
 <img width="327" alt="image" src="https://github.com/KORLA2/Kubernetes/assets/96729391/67646c68-cd9f-4c32-9f2a-69df9d61e661">
 
