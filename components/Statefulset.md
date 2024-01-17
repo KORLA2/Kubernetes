@@ -13,21 +13,19 @@ Problems Statefulset Solves:
 
 #### 1. Seperate PV
 
-    To achieve high availability we need replicas . If we deploy state ful apps like data base as a deployment then each replica uses same Persistent Volumes then there is 
-    inconsistency in Reads and writes.
+To achieve high availability we need replicas . If we deploy state ful apps like data base as a deployment then each replica uses same Persistent Volumes then there is 
+inconsistency in Reads and writes.
     
   <img width="182" alt="image" align="center" src="https://github.com/KORLA2/Kubernetes/assets/96729391/a02440d2-685d-4c8e-898c-b4c83f4c978a">
 
 
-  There is other Kubernetes object called Statefulset if we deploy such apps as statefulset then each replica use different PV.
+There is other Kubernetes object called Statefulset if we deploy such apps as statefulset then each replica use different PV.
 
   <img width="181" alt="image"  align="center" src="https://github.com/KORLA2/Kubernetes/assets/96729391/c2ce4e50-02ee-4883-9d4b-dd7cb72a8d95">
 
  #### 2. Ordered Pods 
  
-    We have to allow only one data base to write (Master Data Base) and all other replicas to read (Slaves).
-   Kubernetes start replicas of statefulset orderly which means first master pod and then slave pods will be created one by one  but not like Deployment Randomly.
-   Because there should be sync in between pods. Pods copy data from previous pods. If we delete/ scale down  last pod will be deleted.
+We have to allow only one data base to write (Master Data Base) and all other replicas to read (Slaves).   Kubernetes start replicas of statefulset orderly which means first master pod and then slave pods will be created one by one  but not like Deployment Randomly. Because there should be sync in between pods. Pods copy data from previous pods. If we delete/ scale down  last pod will be deleted.
    
    <img width="333" alt="image" src="https://github.com/KORLA2/Kubernetes/assets/96729391/3915747a-e227-4a76-aa6c-c1d609fe25df">
 
