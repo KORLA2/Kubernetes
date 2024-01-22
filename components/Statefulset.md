@@ -36,10 +36,14 @@ As each replica gets its own own PV even after restarting pod is attached to sam
 
 <img width="327" alt="image" src="https://github.com/KORLA2/Kubernetes/assets/96729391/67646c68-cd9f-4c32-9f2a-69df9d61e661">
 
+
 ### Headless Services
 
 To interact with Pod we need services which  load balances and send request to any pod , but in stateful apps we have to select only one pod and write to that pod and 
-rest all pods copies data from it. So for this purpose headless services are used. 
+rest all pods copies data from it. So for this purpose headless services are used. Headless Services also does load balancing but using these we can select any specific pod.
+
+
+
 
  
      
