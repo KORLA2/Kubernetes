@@ -72,6 +72,8 @@ But unlike deployments we need individual volumes for each pod, statefulsets tak
 Now using Storage Class or  manually creating persistent volume with necessary configuration persistent volumes are attached.
 
 
+If we scale the statefulset number of pvs and pvc will  increase while we scale down those will not be removed.
+
  
      
 
