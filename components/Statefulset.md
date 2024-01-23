@@ -53,7 +53,9 @@ Creating Statefulsets are similar to creating deployments. We have to mention se
 
 <img width="338" alt="image" src="https://github.com/KORLA2/Kubernetes/assets/96729391/5af6a1eb-ebac-4664-86b2-7bccbd00ea80">
 
+
 <img width="183" alt="image" src="https://github.com/KORLA2/Kubernetes/assets/96729391/d934cc76-c6e7-446b-8665-896f9923a9aa">
+
 Now this headless service is connected to those 3 replicas of mongodb pods.
 
 After connecting to mongosvc through mongo compass as mentioned in volumes chapter.
