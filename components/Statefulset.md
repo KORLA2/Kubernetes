@@ -41,8 +41,33 @@ As each replica gets its own own PV even after restarting pod is attached to sam
 
 To interact with Pod we need services which  load balances and send request to any pod , but in stateful apps we have to select only one pod and write to that pod and 
 rest all pods copies data from it. So for this purpose headless services are used. Headless Services also does load balancing but using these we can select any specific pod.
+By Declaring ClusterIp as None we can create headless service.
+
+By mentioning name of the pod in front of service name we can receive response from specific pod.
+
+#### curl mongopod-1.mongosvc 
+Assuming mongosvc is a head less service and connected to mongopod-1 
+
+Let us Create 3 replicas of Mongo Db Statefulset and connect with Mongo Compass.
+Creating Statefulsets are similar to creating deployments. We have to mention service name.
+
+<img width="338" alt="image" src="https://github.com/KORLA2/Kubernetes/assets/96729391/5af6a1eb-ebac-4664-86b2-7bccbd00ea80">
+
+<img width="183" alt="image" src="https://github.com/KORLA2/Kubernetes/assets/96729391/d934cc76-c6e7-446b-8665-896f9923a9aa">
+Now this headless service is connected to those 3 replicas of mongodb pods.
+
+After connecting to mongosvc through mongo compass as mentioned in volumes chapter.
+
+It is randomly connected to any mongo pod If we write to any pod using mongo compass after refresh service connects to other pod and it is not aware of the data stored 
+in other pods as because though it is statefulset there is no replication of data among pods.
+To retain the data we have to use persistent volumes.
+
+But unlike deployments we need individual volumes for each pod, statefulsets take care of this by simply using volumeclaimtemplates in statefulset definition.
 
 
+<img width="254" alt="image" src="https://github.com/KORLA2/Kubernetes/assets/96729391/409fc490-02fd-4c4e-842b-4598d73ecf73">
+
+Now using Storage Class or  manually creating persistent volume with necessary configuration persistent volumes are attached.
 
 
  
