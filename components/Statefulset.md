@@ -51,7 +51,7 @@ Assuming mongosvc is a head less service and connected to mongopod-1
 Let us Create 3 replicas of Mongo Db Statefulset and connect with Mongo Compass.
 Creating Statefulsets are similar to creating deployments. We have to mention service name.
 
-<img width="338" alt="image" src="https://github.com/KORLA2/Kubernetes/assets/96729391/5af6a1eb-ebac-4664-86b2-7bccbd00ea80">
+<img width="338" alt="image" src="https://github.com/KORLA2/Kubernetes/assets/96729391/5af6a1eb-ebac-4664-86b2-7bccbd00ea80"> .
 
 
 <img width="183" alt="image" src="https://github.com/KORLA2/Kubernetes/assets/96729391/d934cc76-c6e7-446b-8665-896f9923a9aa">
