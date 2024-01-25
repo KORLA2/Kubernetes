@@ -8,7 +8,7 @@ There are 3 types of probes.
 2. Readinesss probe
 3. Start up probe
 
-<h1> LivenessProbe </h1>
+**LivenessProbe**
 
   Ensures container is always  running. We make network calls / execute some commands inside the container if fails then kubelet restarts the pod.
   
