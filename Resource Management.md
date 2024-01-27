@@ -28,12 +28,10 @@ Then Burstable as it might comsume more resources.
 Using Limit Range which is another type of Kubernetes object through which we have granular level access to resources. By which we can restrict how much resources a 
 pod/container/pvc  can use .If the request/ limits for container/pod .. specified are under the limits of Limit Range definition then only corresponding pod/pvc is created
 
-![image](https://github.com/KORLA2/Kubernetes/assets/96729391/633817b3-69e9-4399-9c54-09647789cf10)
+![image](https://github.com/KORLA2/Kubernetes/assets/96729391/74efdb32-5188-4b11-8817-6b53c6477ba5)
 
 Instead of defining at pod level we can define at namespace level.
 Using ResourceQuota object we can specify how many deployments/ statefulsets etc.. can be deployed to the namespace where resourcequota is deployed.
 
-![image](https://github.com/KORLA2/Kubernetes/assets/96729391/74efdb32-5188-4b11-8817-6b53c6477ba5)
-
-
+![image](https://github.com/KORLA2/Kubernetes/assets/96729391/633817b3-69e9-4399-9c54-09647789cf10)
 
