@@ -18,7 +18,7 @@ How to explicitly tell kubernetes scheduler to schedule a pod on the node we are
   Using this command we can add team=analytics label to nodes  minikube-m02 , m03 In pod definition using node Selector we can deploy the pod to nodes having
   team analytics label.
 
-         <img width="209" alt="image" src="https://github.com/KORLA2/Kubernetes/assets/96729391/2dfbc11f-04ef-49e2-97f8-f08de80a465d"/>
+  <img width="209" alt="image" src="https://github.com/KORLA2/Kubernetes/assets/96729391/2dfbc11f-04ef-49e2-97f8-f08de80a465d"/>
 
 Using Node,Pod  Affinity we can even schedule better than node names, node selectors. Using these we can tell k8s scheduler deploy to the node whose 
 particualar label value greater/lesser than value and much more we can always deploy some pods on the same node or always different nodes etc.
