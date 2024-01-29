@@ -9,7 +9,7 @@ How to explicitly tell kubernetes scheduler to schedule a pod on the node we are
  
   <img width="204" alt="image" src="https://github.com/KORLA2/Kubernetes/assets/96729391/8ef7b8c6-b594-4f94-97cd-0662c81d3b74">
    
-    Here the pods will be scheduled in node 3.
+       Here the pods will be scheduled in node 3.
 
   Using Node Selectors we specify labels to nodes and we tell to deploy the pods to the nodes having corresponding labels.
 
