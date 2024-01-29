@@ -8,7 +8,8 @@ How to explicitly tell kubernetes scheduler to schedule a pod on the node we are
  Using Nodenames we can tell kubernetes scheduler to schedule the pods on the specified node.
  
   <img width="204" alt="image" src="https://github.com/KORLA2/Kubernetes/assets/96729391/8ef7b8c6-b594-4f94-97cd-0662c81d3b74"/>
-    Here the pods will be scheduled in node 3.
+  
+  Here the pods will be scheduled in node 3.
 
   Using Node Selectors we specify labels to nodes and we tell to deploy the pods to the nodes having corresponding labels.
 
@@ -22,14 +23,14 @@ How to explicitly tell kubernetes scheduler to schedule a pod on the node we are
           Using Node,Pod  Affinity we can even schedule better than node names, node selectors. Using these we can tell k8s scheduler deploy to the node whose 
           particualar label value greater/lesser than value and much more we can always deploy some pods on the same node or always different nodes etc.
  
-     ![image](https://github.com/KORLA2/Kubernetes/assets/96729391/ce24e5a4-3b3b-45a2-bd39-ab325f19ed34)
+          ![image](https://github.com/KORLA2/Kubernetes/assets/96729391/ce24e5a4-3b3b-45a2-bd39-ab325f19ed34)
 
 
  There are 2 terms 
  
 ####  1. requiredDuringSchedulingIgnoredDuringExecution
           Which means labels are required for node selection if not satisfied pod will be in pending state forever.Pods which are already present in the node are ignored 
-         though they didn't have necessary labels.
+           though they didn't have necessary labels.
 
 #### 2. prefferedDuringSchedulingIgnoredDuringExecution
      
