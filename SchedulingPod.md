@@ -29,26 +29,25 @@ particualar label value greater/lesser than value and much more we can always de
    There are 2 terms. 
  
 #### 1. requiredDuringSchedulingIgnoredDuringExecution
-           Which means labels are required for node selection if not satisfied pod will be in pending state forever.Pods which are already present in the node are ignored 
-           though they didn't have necessary labels.
+ Which means labels are required for node selection if not satisfied pod will be in pending state forever.Pods which are already present in the node are ignored 
+ though they didn't have necessary labels.
 
 #### 2. prefferedDuringSchedulingIgnoredDuringExecution
-     
-         Which means labels are preferred though none of the node has the lables best rank node will be preferred.Here we have given more preference to the node which has 
-         label rank and the value is greater than 4, if this is not possible then on to node which has team=analytics label . If this is also not possible then pod is 
-        scheduled on some other node. This term is just preffered.
+ Which means labels are preferred though none of the node has the lables best rank node will be preferred.Here we have given more preference to the node which has 
+label rank and the value is greater than 4, if this is not possible then on to node which has team=analytics label . If this is also not possible then pod is 
+ scheduled on some other node. This term is just preffered.
  
-     <img width="346" alt="image" src="https://github.com/KORLA2/Kubernetes/assets/96729391/b8f6eddf-0a4e-47f1-a0c6-06e4161d6630"/>
+ <img width="346" alt="image" src="https://github.com/KORLA2/Kubernetes/assets/96729391/b8f6eddf-0a4e-47f1-a0c6-06e4161d6630"/>
 
-         Using Pod affinity we can force the scheduler to schedule the pods always on same, different nodes. 
+  Using Pod affinity we can force the scheduler to schedule the pods always on same, different nodes. 
        
-         <img width="268" alt="image" src="https://github.com/KORLA2/Kubernetes/assets/96729391/be3d3347-22ce-45b1-b4cc-3f34d9f62337"/>
+ <img width="268" alt="image" src="https://github.com/KORLA2/Kubernetes/assets/96729391/be3d3347-22ce-45b1-b4cc-3f34d9f62337"/>
           
    #### Here the pod will be deployed to same nodes in which a pod has a app=todo-ui label deployed.
 
-         Using Pod AntiAffinity we can even force the scheduler to not to deploy on to the nodes in which pods having a todo=ui label.
+ Using Pod AntiAffinity we can even force the scheduler to not to deploy on to the nodes in which pods having a todo=ui label.
        
-     <img width="260" alt="image" src="https://github.com/KORLA2/Kubernetes/assets/96729391/7ec55b3c-a236-42f2-900a-ea39c281cf3a"/>
+  <img width="260" alt="image" src="https://github.com/KORLA2/Kubernetes/assets/96729391/7ec55b3c-a236-42f2-900a-ea39c281cf3a"/>
 
 
 
