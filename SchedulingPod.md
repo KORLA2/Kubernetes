@@ -1,3 +1,5 @@
+Kubernetes Scheduler filters all the nodes that can run the pod and score the nodes based on resources and many factors and schedules on  highest scored node.
+
 How to explicitly tell kubernetes scheduler to schedule a pod on the node we are interested in?
 
 1. Using Nodename
