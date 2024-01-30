@@ -50,7 +50,34 @@ label rank and the value is greater than 4, if this is not possible then on to n
        
   <img width="260" alt="image" src="https://github.com/KORLA2/Kubernetes/assets/96729391/7ec55b3c-a236-42f2-900a-ea39c281cf3a"/>
 
+## Taints and Tolerations.
 
+In case we want dont want pods to be deployed on to node in which it can't tolerate which means we dont want some pods to be deployed on some nodes then we simple add some taints (simple labels) to nodes. There are 3 terms here
+
+  ### 1. No Schedule
+  ### 2. No Execute
+  ### 3. Prefer No Schedule.
+
+  Based on these 3 terms pods  we taint the node. 
+#### No Schedule is explicitly we tell the scheduler that don't schedule pods on the nodes if they cant tolerate. Already existing pods on the node will not be affected by this.  
+
+#### No Execute is more stricter than no schedule , alredy existing pods will be terminated and will be scheduled to other nodes if they can't tolerate.
+
+#### Prefer no schedule is scheduler will not prefer the node if pods cant tolerate , but if no satisfied node was found scheduler schedules on the node though pod can't tolerate. 
+
+     kubectl taint minikube-m02 env=production:NoExecute
+Meaning we tainted node minikube-m02 with env:production label if the pods existing on this node didn't have this label as toleration they will be terminated and scheduled on other nodes and no new pod will be scheduled on this node if they can't tolerate.
+
+If we taint the node with above command and if we wantedly tell scheduler to schedule pod on the minikube-m02 node using node selector or node affinity, then pod will be in pending state.
+
+If the pod can tolerate the taint using this,
+
+ <img width="199" alt="image" src="https://github.com/KORLA2/Kubernetes/assets/96729391/22e75c8a-b209-45ba-89a9-8958bde84d6f">
+
+then pod can be scheduled.
+Tolerations are at pod level.
+
+  
 
 
 
