@@ -13,7 +13,7 @@ How to explicitly tell kubernetes scheduler to schedule a pod on the node we are
   ## Node Selectors
   Using Node Selectors we specify labels to nodes and we tell to deploy the pods to the nodes having corresponding labels.
 
-##### kubectl  label node minikube-m03 minikube-m02 team=analytics.
+   ##### kubectl  label node minikube-m03 minikube-m02 team=analytics.
 
   Using this command we can add team=analytics label to nodes  minikube-m02 , m03 In pod definition using node Selector we can deploy the pod to nodes having
   team analytics label.
