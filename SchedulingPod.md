@@ -77,6 +77,9 @@ If the pod can tolerate the taint using this,
 then pod can be scheduled.
 Tolerations are at pod level.
 
+### 
+ kubectl taint minikube-m02 env:prod:NoExecute-
+     
   
 
 
