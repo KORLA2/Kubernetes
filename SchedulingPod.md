@@ -24,14 +24,16 @@ How to explicitly tell kubernetes scheduler to schedule a pod on the node we are
 
   <img width="209" alt="image" src="https://github.com/KORLA2/Kubernetes/assets/96729391/2dfbc11f-04ef-49e2-97f8-f08de80a465d"/>
   
-## Node/Pod Affinity
+## Affinity
+
+### Node Affinity
 Using Node,Pod  Affinity we can even schedule better than node names, node selectors. Using these we can tell k8s scheduler deploy to the node whose 
 particualar label value greater/lesser than value and much more we can always deploy some pods on the same node or always different nodes etc.
  
  ![image](https://github.com/KORLA2/Kubernetes/assets/96729391/ce24e5a4-3b3b-45a2-bd39-ab325f19ed34)
 
 
-   There are 2 terms. 
+   There are 2 types of Node Affinity. 
  
 #### 1. requiredDuringSchedulingIgnoredDuringExecution
  Which means labels are required for node selection if not satisfied pod will be in pending state forever.Pods which are already present in the node are ignored 
@@ -45,8 +47,8 @@ label rank and the value is greater than 4, if this is not possible then on to n
  <img width="346" alt="image" src="https://github.com/KORLA2/Kubernetes/assets/96729391/b8f6eddf-0a4e-47f1-a0c6-06e4161d6630"/>
 
 Node affinity is selecting nodes and pod affinity is selecting pod.
-
-  Using Pod affinity we can force the scheduler to schedule the pods always on same, different nodes. 
+### Pod Affinity
+ Using Pod affinity we can force the scheduler to schedule the pods always on same, different nodes. 
        
  <img width="268" alt="image" src="https://github.com/KORLA2/Kubernetes/assets/96729391/be3d3347-22ce-45b1-b4cc-3f34d9f62337"/>
           
