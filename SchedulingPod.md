@@ -15,8 +15,8 @@ How to explicitly tell kubernetes scheduler to schedule a pod on the node we are
 
     kubectl  label node minikube-m03 minikube-m02 team=analytics.
 
-  Using this command we can add team=analytics label to nodes  minikube-m02 , m03 In pod definition using node Selector we can deploy the pod to nodes having
-  team analytics label.
+  Using this command we can add team=analytics label to nodes  minikube-m02 , m03. In pod definition using node Selector we can deploy the pod to nodes having
+  team analytics label. Now pods are deployed to minikube-m02 , minikube-m03 nodes.
 
   <img width="209" alt="image" src="https://github.com/KORLA2/Kubernetes/assets/96729391/2dfbc11f-04ef-49e2-97f8-f08de80a465d"/>
   
@@ -40,6 +40,8 @@ label rank and the value is greater than 4, if this is not possible then on to n
  
  <img width="346" alt="image" src="https://github.com/KORLA2/Kubernetes/assets/96729391/b8f6eddf-0a4e-47f1-a0c6-06e4161d6630"/>
 
+Node affinity is selecting nodes and pod affinity is selecting pod.
+
   Using Pod affinity we can force the scheduler to schedule the pods always on same, different nodes. 
        
  <img width="268" alt="image" src="https://github.com/KORLA2/Kubernetes/assets/96729391/be3d3347-22ce-45b1-b4cc-3f34d9f62337"/>
@@ -52,13 +54,12 @@ label rank and the value is greater than 4, if this is not possible then on to n
 
 ## Taints and Tolerations.
 
-In case we want dont want pods to be deployed on to node in which it can't tolerate which means we dont want some pods to be deployed on some nodes then we simple add some taints (simple labels) to nodes. There are 3 terms here
+In case we want dont want pods to be deployed on to node in which it can't tolerate which means we dont want some pods to be deployed on some nodes then we simple add some taints (simple labels) to nodes. There are 3 type of  taints
 
   ### 1. No Schedule
   ### 2. No Execute
   ### 3. Prefer No Schedule.
 
-  Based on these 3 terms pods  we taint the node. 
 #### No Schedule is explicitly we tell the scheduler that don't schedule pods on the nodes if they cant tolerate. Already existing pods on the node will not be affected by this.  
 
 #### No Execute is more stricter than no schedule , alredy existing pods will be terminated and will be scheduled to other nodes if they can't tolerate.
@@ -66,7 +67,7 @@ In case we want dont want pods to be deployed on to node in which it can't toler
 #### Prefer no schedule is scheduler will not prefer the node if pods cant tolerate , but if no satisfied node was found scheduler schedules on the node though pod can't tolerate. 
 
      kubectl taint minikube-m02 env=production:NoExecute
-Meaning we tainted node minikube-m02 with env:production label if the pods existing on this node didn't have this label as toleration they will be terminated and scheduled on other nodes and no new pod will be scheduled on this node if they can't tolerate.
+Meaning we tainted node minikube-m02 with env:production label if the pods existing on this node cannot tolerate they will be terminated and scheduled on other nodes and no new pod will be scheduled on this node if they can't tolerate.
 
 If we taint the node with above command and if we wantedly tell scheduler to schedule pod on the minikube-m02 node using node selector or node affinity, then pod will be in pending state.
 
@@ -76,6 +77,8 @@ If the pod can tolerate the taint using this,
 
 then pod can be scheduled.
 Tolerations are at pod level.
+
+Without adding tolerations to taints pods will not be scheduled on the node having taint.
 
 ### Untaint the label on the node
     kubectl taint minikube-m02 env:prod:NoExecute-
