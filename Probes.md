@@ -43,3 +43,8 @@ Liveness and Readiness Probe will only be executed when startup probe is success
 <img width="637" alt="image" src="https://github.com/KORLA2/Kubernetes/assets/96729391/35b8a032-6069-4484-80eb-985fa806a87b">
 
 
+So After waiting for initialDelaySeconds after the pod has been scheduled, if it is successful then only Liveness Probe and Readiness Probes will be executed. If failed kubernetes repeates for failure threshold times if failed again pod will be stopped.
+
+In case of Readiness Probe same story continues if success receives traffic from service , if failed runned again till failure threshold times. In any case probe execution is successful receives traffic but fails again then pod will be removed from service endpoints and pod doesn’t receive traffic.
+
+Liveness Probe (Self Explanatory)
