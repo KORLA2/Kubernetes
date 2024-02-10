@@ -53,7 +53,7 @@ Pathtypes can be
 1. prefix
 2. exact
 Prefix is path must be prefix of the requested path.
-### /api/bar is prefix of /api/bar/foo or /api/bar/ but not with /api/barfoo
+### /api/bar is prefix of /api/bar/foo or /api/bar/ and also with /api/barfoo
 Exact is requested path must match to path in the manifest file.
 
 ### Example
