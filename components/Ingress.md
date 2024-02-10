@@ -93,7 +93,8 @@ So after the service receives the request the /lib path has to be reomved and fo
 Using rewrite-target  annotation we can achieve this.
 
 
-<img width="326" alt="image" src="https://github.com/KORLA2/Kubernetes/assets/96729391/57d6e138-087a-4fc1-8efb-eecad72915f8">
+<img width="326" alt="image" src="https://github.com/KORLA2/Kubernetes/assets/96729391/57d6e138-087a-4fc1-8efb-eecad72915f8">.
+
 So now when I request nginx.o/lib then after the service receives the request /lib is replaced by /.
 
 <img width="302" alt="image" src="https://github.com/KORLA2/Kubernetes/assets/96729391/69ecfec0-8318-4e5c-944f-00d6a0292432">
