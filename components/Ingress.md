@@ -66,12 +66,11 @@ We can list all addons in minikube using  minikube addons list
 Then  the necessary ingress controller pod , services .. are deployed to control-plane node in ingress-nginx namespace.
 <img width="931" alt="image" src="https://github.com/KORLA2/Kubernetes/assets/96729391/164034bc-316f-46bf-92f3-addfa98c296c">
 
-I have created 2 pods and using host volumes I have added some text to /path/index.html file and /libs/index.html file on local-cluster node and mounted to nginx mount path and attached 2 services to 2 pods .
+I have created 2 pods and using host volumes I have added some text to those 2 pods .
 
 
-<img width="244" alt="image" src="https://github.com/KORLA2/Kubernetes/assets/96729391/d1a6b746-f20f-479f-876b-a960b6cfd784">.
-
-<img width="225" alt="image" src="https://github.com/KORLA2/Kubernetes/assets/96729391/b6803061-8b4c-4eb0-957e-4b3b5745f373">
+<img width="244" alt="image" src="https://github.com/KORLA2/Kubernetes/assets/96729391/d1a6b746-f20f-479f-876b-a960b6cfd784">
+   <img width="225" alt="image" src="https://github.com/KORLA2/Kubernetes/assets/96729391/b6803061-8b4c-4eb0-957e-4b3b5745f373">
 
 Now I attached ingress to these services.
 
