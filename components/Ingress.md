@@ -40,7 +40,7 @@ When ever the request comes to controller pod it routes to corresponding service
 
 <img width="262" alt="image" src="https://github.com/KORLA2/Kubernetes/assets/96729391/f3cb5b7c-405f-49ab-85d8-8a54dd301855">
 
-When the path is nginx.o/ then it  routes to pathsvc service if it is nginx.o/lib then routes to libsvc.
+When the path is nginx.in/ then it  routes to pathsvc service if it is nginx.in/lib then routes to libsvc.
 
 ### Host Based Routing
 
