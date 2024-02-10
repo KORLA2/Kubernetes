@@ -40,7 +40,7 @@ When ever the request comes to controller pod it routes to corresponding service
 
 <img width="262" alt="image" src="https://github.com/KORLA2/Kubernetes/assets/96729391/f3cb5b7c-405f-49ab-85d8-8a54dd301855">
 
-When the path is / routes to pathsvc service if / lib then routes to libsvc.
+When the path is nginx.o/ then it  routes to pathsvc service if it is nginx.o/lib then routes to libsvc.
 
 ### Host Based Routing
 
@@ -49,6 +49,12 @@ When the path is / routes to pathsvc service if / lib then routes to libsvc.
 But to access the domain name in browser we have to manage the local domains , in /etc/hosts file map the domain name to the node ip.
 
 Path type is required in ingress rules manifest file.
+Pathtypes can be
+1. prefix
+2. exact
+Prefix is path must be prefix of the requested path.
+### /api/bar is prefix of /api/bar/foo or /api/bar/ but not with /api/barfoo
+Exact is requested path must match to path in the manifest file.
 
 ### Example
 
@@ -63,8 +69,7 @@ Then  the necessary ingress controller pod , services .. are deployed to control
 I have created 2 pods and using host volumes I have added some text to /path/index.html file and /libs/index.html file on local-cluster node and mounted to nginx mount path and attached 2 services to 2 pods .
 
 
-<img width="244" alt="image" src="https://github.com/KORLA2/Kubernetes/assets/96729391/d1a6b746-f20f-479f-876b-a960b6cfd784">
-
+<img width="244" alt="image" src="https://github.com/KORLA2/Kubernetes/assets/96729391/d1a6b746-f20f-479f-876b-a960b6cfd784">.
 
 <img width="225" alt="image" src="https://github.com/KORLA2/Kubernetes/assets/96729391/b6803061-8b4c-4eb0-957e-4b3b5745f373">
 
@@ -75,8 +80,23 @@ Using curl command I can access the service
 
 <img width="206" alt="image" src="https://github.com/KORLA2/Kubernetes/assets/96729391/7a7da1d2-097d-450a-a873-ce0e5963d368">
 
+But there is a problem when we  use curl  nginx.o/lib 
+
+<img width="292" alt="image" src="https://github.com/KORLA2/Kubernetes/assets/96729391/71232d77-e15d-4a2e-8ae2-05061b41b7ff">
+
+Though we mentioned when we hit /lib path, request must be routed to libsvc service but the same path is forwarded to the pod but the pod doesnt have the path, so we get this page.
+
+So after the service receives the request the /lib path has to be reomved and forwarded to pod.
+
+<img width="372" alt="image" src="https://github.com/KORLA2/Kubernetes/assets/96729391/b9da6f22-a155-4c25-9ee9-464b960b6ab4">
+
+Using rewrite-target  annotation we can achieve this.
 
 
+<img width="326" alt="image" src="https://github.com/KORLA2/Kubernetes/assets/96729391/57d6e138-087a-4fc1-8efb-eecad72915f8">
+So now when I request nginx.o/lib then after the service receives the request /lib is replaced by /.
+
+<img width="302" alt="image" src="https://github.com/KORLA2/Kubernetes/assets/96729391/69ecfec0-8318-4e5c-944f-00d6a0292432">
 
 
 
