@@ -1,2 +1,3 @@
 Role Based Access Control
-In Kubernetes we can set the permissions to  user/services to perform the activities on the cluster
+In Kubernetes we can set the permissions to  user/group or some other application to perform the activities on the cluster.
+
