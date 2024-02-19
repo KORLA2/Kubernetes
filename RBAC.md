@@ -88,16 +88,19 @@ kubectl config set-cluster dev-cluster --server=https://127.0.0.1:52807 \
 vim  ~/.kube/new-config
 ```
 
-
+```
 kubectl config set-credentials goutham --client-certificate=goutham.crt  --client-key=goutham.key 
+```
 
+```
 kubectl config set-context dev --cluster=dev-cluster --namespace=shopping --user=Goutham  <b>Must be same as the CN in openssl command </b> 
-
+```
 kubectl config use-context dev
 
+```
 kubectl get pods
 Error from server (Forbidden): pods is forbidden: User "Goutham" cannot list resource "pods" in API group "" in the namespace "shopping"
-
+```
 
 
 
