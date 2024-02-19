@@ -17,7 +17,9 @@ Every request to access the cluster 1st reaches to API server it decides wheathe
 
 All the users realted information present in ~/.kube/config file in the minikube. Any user is treated as authenticated if the user certificate is verified by the 
 certificate authority.
-<img width="367" alt="image" src="https://github.com/KORLA2/Kubernetes/assets/96729391/92486444-1899-4db6-a8fb-7c31f83e01d7">
+
+<img width="367" alt="image" src="https://github.com/KORLA2/Kubernetes/assets/96729391/92486444-1899-4db6-a8fb-7c31f83e01d7">.
+
 
 ##### Every kubectl command reaches to API server through the kube config file it has all the details where is the master node , user , clusters , namespaces etc.
 
@@ -40,30 +42,61 @@ So when we use any command, kubernetes verifies the client-certificate and the r
 
 Using Openssl we can create certificates.
 
-Let's create a certificate for Bob Smith:
+Let's create a certificate for Goutham:
 
 
 ```
 #start with a private key
-openssl genrsa -out bob.key 2048
-
+openssl genrsa -out goutham.key 2048
 ```
 
 Now we have a key, we need a certificate signing request (CSR). </br>
 We also need to specify the groups that Bob belongs to. </br>
-Let's pretend Bob is part of the `Shopping` team and will be developing 
+Let's pretend goutham is part of the `Shopping` team and will be developing 
 applications for the `Shopping` 
 
 ```
-openssl req -new -key bob.key -out bob.csr -subj "/CN=Bob Smith/O=Shopping"
+openssl req -new -key goutham.key -out goutham.csr -subj "/CN=Goutham/O=Shopping"
 ```
 
 Use the CA to generate our certificate by signing our CSR. </br>
 We may set an expiry on our certificate as well
 
 ```
-openssl x509 -req -in bob.csr -CA ca.crt -CAkey ca.key -CAcreateserial -out bob.crt -days 1
+openssl x509 -req -in bob.csr -CA ~/.minikube/ca.crt -CAkey ~/.minikube/ca.key -CAcreateserial -out bob.crt -days 10
+
 ```
+
+We can even create our own kube/config file and explicitly tell the kubectl commands to look at this file while connecting masternode.
+
+We'll be trying to avoid messing with our current kubernetes config. </br>
+
+So lets tell `kubectl` to look at a new config that does not yet exists 
+
+```
+export KUBECONFIG=~/.kube/new-config
+```
+
+Create a cluster entry which points to the cluster and contains the details of the CA certificate:
+
+
+```
+kubectl config set-cluster dev-cluster --server=https://127.0.0.1:52807 \
+--certificate-authority=ca.crt
+
+#see changes 
+vim  ~/.kube/new-config
+```
+
+
+kubectl config set-credentials goutham --client-certificate=goutham.crt  --client-key=goutham.key 
+
+kubectl config set-context dev --cluster=dev-cluster --namespace=shopping --user=Goutham  <b>Must be same as the CN in openssl command </b> 
+
+kubectl config use-context dev
+
+kubectl get pods
+Error from server (Forbidden): pods is forbidden: User "Goutham" cannot list resource "pods" in API group "" in the namespace "shopping"
 
 
 
