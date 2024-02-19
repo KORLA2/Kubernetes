@@ -81,8 +81,8 @@ Create a cluster entry which points to the cluster and contains the details of t
 
 
 ```
-kubectl config set-cluster dev-cluster --server=https://127.0.0.1:52807 \
---certificate-authority=ca.crt
+kubectl config set-cluster dev-cluster --server=https://192.168.49.2:8443 
+--certificate-authority=.minikube/ca.crt
 
 #see changes 
 vim  ~/.kube/new-config
@@ -93,13 +93,44 @@ kubectl config set-credentials goutham --client-certificate=goutham.crt  --clien
 ```
 
 ```
-kubectl config set-context dev --cluster=dev-cluster --namespace=shopping --user=Goutham  <b>Must be same as the CN in openssl command </b> 
+kubectl config set-context dev --cluster=dev-cluster --namespace=shopping --user=Goutham    
 ```
+
+Default namespace for dev-cluster 
+
 kubectl config use-context dev
 
 ```
 kubectl get pods
 Error from server (Forbidden): pods is forbidden: User "Goutham" cannot list resource "pods" in API group "" in the namespace "shopping"
+```
+## Giving Goutham Access
+
+Using  Roles and Role binding we can assign permissions to user Goutham, but admin has to give accces . Let's switch back to old kube config file.
+KUBECONFIG=~/.kube/config
+
+Now we have to create shopping namespace as the Goutham has access to only shopping namespace.
+
+```
+kubectl create ns shopping
+```
+Now lets create role means list of permissions Goutham User has.
+
+```
+role.yml
+
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: pod-reader
+
+rules:
+- apiGroups: [""] # "" indicates the core API group
+  verbs: ["get", "watch", "list"]
+  resources: ["pods", "pods/log"]
+  
+
+
 ```
 
 
