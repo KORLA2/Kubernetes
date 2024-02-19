@@ -123,15 +123,96 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
 metadata:
   name: pod-reader
-
+  namespace: shopping
 rules:
-- apiGroups: [""] # "" indicates the core API group
-  verbs: ["get", "watch", "list"]
-  resources: ["pods", "pods/log"]
+- apiGroups: [""]   # "" indicates the core API group
+  verbs: ["get", "watch", "list"] # what operations we can perform.
+  resources: ["pods", "pods/log"] 
   
+```
 
+<b>User/ Group having this role can get , list, watch , pods</b>
+
+Using Rolebinding let us attach role to Goutham
 
 ```
+rolebinding.yml
+
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: read-pods
+  namespace: shopping
+subjects:
+
+# You can specify more than one "subject"
+- kind: User
+  name: Goutham # "name" is case sensitive
+  apiGroup: rbac.authorization.k8s.io
+
+roleRef:
+  # "roleRef" specifies the binding to a Role / ClusterRole
+  kind: Role
+  name: pod-reader # this must match the name of the Role or ClusterRole you wish to bind to
+  apiGroup: rbac.authorization.k8s.io
+
+```
+So Now Goutham user can watch , list pods in shopping namespace.
+Instead of assigning this role to every user assign to group and all the users in the group have the same permissions.
+
+<b> Role and Role Binding are namespaced. </b> means groups/users having this role attached cannot access the pods in other namespace.
+
+If we want to access the pods in other namespace we have to deploy role and role binding in other namespace,but deploying in every name space is difficult.
+
+<img width="435" alt="image" src="https://github.com/KORLA2/Kubernetes/assets/96729391/57ed2ba7-82a6-4faa-8f40-097ac5a5ec46">.
+
+So using role and rolebinding we have to use cluster role and cluster role binding which give access to resources at cluster level.
+
+By replacing ClusterRole in place of kind role becomes cluster role same with cluster role binding. 
+
+
+## Service Accounts
+
+So when user/group wants to access the resources with some permissions we have role , role binding cluster role , cluster role binding , but when other pods / some micro service wants to access cluster then? We use ` Service accounts ` for this purpose.
+
+
+Each name space has one default service account pods use this service account to authenticate themselves with api-server.
+
+Let us create a kubectl pod so that we can use kubectl commands to list pods inside a pod.
+
+```
+kubectl-pod.yaml
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: kubectl-pod
+
+  labels:
+    name: myapp
+spec:
+  serviceAccount: test-sa # Our own service account
+  containers:
+  - name: myapp
+    image: bitnami/kubectl
+    command: ["sleep" , "20000"]
+
+```
+Now using `kubectl exec -it kubectl-pod -- bash` we can go inside pod.
+when we try to list the pods then we get 
+```
+Error from server (Forbidden): pods is forbidden: User "system:serviceaccount:default:default" cannot list resource "pods" in API group "" in the namespace "default"
+```
+This pod uses default service account and it doesn't have permissions to list pods in default namespace.
+
+
+Using rolebinding we can attach the permissions to service account  under subject section in the above rolebinding adding this 
+```
+- kind : serviceaccount
+  name: default
+```
+can a assign list , watch permission to default service account.
+
 
 
 
