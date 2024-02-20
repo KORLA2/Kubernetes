@@ -30,6 +30,9 @@ pod/container/pvc  can use .If the request/ limits for container/pod .. specifie
 
 ![image](https://github.com/KORLA2/Kubernetes/assets/96729391/74efdb32-5188-4b11-8817-6b53c6477ba5)
 
+If we define resources less than the request or more than the limit pod won't be scheduled.
+If we dont specify any limit or request to the <b>container</b> default , default request will be used. 
+
 Instead of defining at pod level we can define at namespace level.
 Using ResourceQuota object we can specify how many deployments/ statefulsets etc.. can be deployed to the namespace where resourcequota is deployed.
 
