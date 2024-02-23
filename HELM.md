@@ -22,10 +22,12 @@ deploying becomes easy through helm.
 ## Helm Architecture 
 
 <img width="605" alt="image" src="https://github.com/KORLA2/Kubernetes/assets/96729391/21a15615-347f-487b-8f17-7b0df3a1ec34">
-Helm is acommand line tool uses values.yaml file to update the content in each manifests file uses artifact hub to pull some charts if mentioned in our chart.yaml file.
+
+Helm is a command line tool uses values.yaml file to update the content in each manifests file uses artifact hub to pull some charts if mentioned in our chart.yaml file.
 uses kubeconfig file (which contains cluster related information) to deploy to the cluster.
 
 Using simple sudo snap install helm installs helm .
+
 ##### helm create <Chart Name> command creates necessary chart locally.
 
 ### Helm Syntax
