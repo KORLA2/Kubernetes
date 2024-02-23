@@ -1,3 +1,11 @@
+In every environment deploying same manifests with little change is tidious . Using Helm all the manifests uses one ` <b>values.yaml</b> ` file  any changes has to be 
+written in this file. 
+
+<img width="312" alt="image" src="https://github.com/KORLA2/Kubernetes/assets/96729391/700664d9-5d37-4f76-9628-6ed99374741a">
+
+So instead of deploying every manifest file manually , changing in values.yaml file using single helm command all manifests will be deployed to corresponding 
+environments.
+
 Helm is a bundle of kubernetes manifests
 Helm is a package manager for kubernetes. 
 
@@ -6,7 +14,7 @@ Helm is a package manager for kubernetes.
 1.  Packing all the manifests and deploys it together.
 2. Dependencies are easily managed with Helm when ever one pod is dependent on other.
 3. In every environment writing and deploying same manifests with some little difference in syntax is tidious.
-
+4. Rollbacks are easy with Helm.
 
 In every stage same manifest files are deployed and these files  share data from values.yaml file what ever we want to change , we can change in this file ,
 deploying becomes easy through helm.
