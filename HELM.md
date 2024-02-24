@@ -33,19 +33,52 @@ Using simple sudo snap install helm installs helm .
 ### Helm Syntax
 
 1. {{}} braces are used in any file in helm to substitute data from another file.
+
 2. If we want to use our own value when specfied field in values.yaml is not present then we use default keyword
      ex: {{ .Values.data | default 2 }} 2 is used if data is not present in values.yaml file.
 
 3. If we want ot enclose data in string quote keyword is used.
      ex: {{ .Values.data | quote }}
+
 4. nindent key word is used to indent the data upto specified spaces.
    ex: {{ .Values.data | nindent 12 }} indents data to 12 spaces this is required as indentation is required in Yaml.
 
 5. In any braces - symbol is used to remove extra spaces 
    ex: {{-Values.data}}
-   
+
+6. We use range keyword to iterate the array in the values.yaml , we use if/ else conditions to verify fields in values.yaml file and we use end to end the block.
+
+```
+deployment.yaml
+
+  {{- if .Values.ingress.tls }}
+  tls:
+    {{- range .Values.ingress.tls }}
+    
+    - hosts:
+        {{- range .hosts }}
+        - {{ . | quote }}
+        {{- end }}
+      secretName: {{ .secretName }}
+    {{- end }}
+  {{- end }}
+
+```
+```
+Values.yaml
+ tls: 
+    - secretName: chart-example-tls
+      hosts:
+        - chart-example.local
+```
+    
+### Setting Any Value through Command Line
+ `helm install chartname --setdeployment.image:redis`     
+### Our Own values.yaml file 
+ helm install chartname --values <Location of values.yaml>
+ 
 ### Helm commands
- ####  helm install <Release Name>  deploys all the resources  to kubernetes cluster 
+ ####  helm install  chartname  deploys all the resources  to kubernetes cluster 
  #### helm template <Location of Manifests> Outputs all the data in all the manifests that helm took from values.yaml
  #### helm upgrade <Release name> Updates the existing chart
  #### helm list  lists all the relases deployed with revisions.
