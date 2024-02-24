@@ -66,27 +66,43 @@ deployment.yaml
 ```
 ```
 Values.yaml
- tls: 
+ingress:
+  tls: 
     - secretName: chart-example-tls
       hosts:
         - chart-example.local
 ```
     
 ### Setting Any Value through Command Line
- `helm install chartname --setdeployment.image:redis`     
+ `helm install <Release Name> --set deployment.image=redis`     
 ### Our Own values.yaml file 
  helm install chartname --values <Location of values.yaml>
  
 ### Helm commands
- ####  helm install  chartname  deploys all the resources  to kubernetes cluster 
- #### helm template <Location of Manifests> Outputs all the data in all the manifests that helm took from values.yaml
- #### helm upgrade <Release name> Updates the existing chart
- #### helm list  lists all the relases deployed with revisions.
- #### helm history <Release Name> lists all the versions of release of app.
- #### helm rollback <Release Name > <Revision Name> ROll back to that version.
- ### helm package <Location of Manifests> packages the resources. After this command is executed it creates zip file.
- ### helm repo index <Location of above zip file> Creates index.yaml file contains all the information of this chart.
-
+```
+ helm install <Release Name> <Location of the Chart>  deploys all the resources  to kubernetes cluster 
+```
+```
+ helm template <Location of Chart> Outputs all the data in all the manifests that helm took from values.yaml
+```
+```
+helm upgrade <Release name> <Location Of the Chart> Updates the existing chart
+```
+```
+ helm list  lists all the relases deployed with revisions.
+```
+ ```
+ helm history <Release Name> lists all the versions of release of app.
+```
+```
+helm rollback <Release Name > <Revision Name> ROll back to that version.
+```
+```
+helm package <Location of Manifests> packages the resources. After this command is executed it creates zip file.
+ ```
+```
+helm repo index <Location of above zip file> Creates index.yaml file contains all the information of this chart.
+```
   
 
 
