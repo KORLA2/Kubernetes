@@ -75,3 +75,5 @@ through API server .
 Kubernetes automatically starts pods after they die but it keeps on dying though after many restarts then there might be some error and it stops restarting 
 and updates etcd.
 
+<img width="947" alt="image" src="https://github.com/KORLA2/Kubernetes/assets/96729391/d3ae7d90-40d8-402b-9514-3a523de5e2c9">
+
