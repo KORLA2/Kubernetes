@@ -1,4 +1,4 @@
-In every environment deploying same manifests with little change is tidious . Using Helm all the manifests uses one ` <b>values.yaml</b> ` file  any changes has to be 
+In every environment deploying same manifests with little change is tidious . Using Helm all the manifests uses one <b>values.yaml</b>  file  any changes has to be 
 written in this file. 
 
 <img width="312" alt="image" src="https://github.com/KORLA2/Kubernetes/assets/96729391/700664d9-5d37-4f76-9628-6ed99374741a">
