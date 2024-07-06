@@ -1,7 +1,7 @@
 To Run the Pod resources are necessary (CPU, Memory).
 We can request the kubernetes to allocate the pod with specified number of resources.
 CPU in percentage  means millcores 100m = 100 millicores. 1000m=1CPU
-Memory in bytes like 1KiB 1GiB Kibibytes Gibibytes.. . 1KB = 1000 bytes 1KiB=1024bytes
+Memory in bytes like 1KiB 1GiB Kibibytes Gibibytes.. . 1KiB = 1000 bytes 1KB=1024bytes
 
 If the pod uses more resources than requested then other pods on this node can't get enough resources . So we can limit the pod to use number of resources.
 
